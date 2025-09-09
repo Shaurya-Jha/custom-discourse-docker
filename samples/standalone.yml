@@ -101,6 +101,14 @@ hooks:
         cmd:
           - git clone https://github.com/discourse/docker_manager.git
 
+  after_bundle:
+    - exec:
+        cmd:
+          - apt-get update
+          - apt-get -y upgrade      # update and upgrade all the packages to latest updates
+          - apt-get install -y ffmpeg imagemagick libmagickwand-dev       # install dependencies required in order to make watermarking work
+
+
 ## Any custom commands to run after building
 run:
   - exec: echo "Beginning of custom commands"
