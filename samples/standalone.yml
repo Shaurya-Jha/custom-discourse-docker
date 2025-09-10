@@ -109,16 +109,17 @@ hooks:
           - apt-get -y upgrade
 
           # Install 'software-properties-common' to enable adding PPAs
-          - apt-get install -y software-properties-common
+          # - apt-get install -y software-properties-common
 
           # Add the 'jonathonf/ffmpeg-4' PPA
-          - add-apt-repository -y ppa:jonathonf/ffmpeg-4
+          # - add-apt-repository -y ppa:jonathonf/ffmpeg-4
 
           # Update the package list again to include packages from the new PPA
           - apt-get update
 
           # Finally, install all the required packages
-          - apt-get install -y imagemagick libmagickwand-dev ffmpeg
+          - apt-get install -y imagemagick libmagickwand-dev 
+          # ffmpeg
 
 
 ## Any custom commands to run after building
