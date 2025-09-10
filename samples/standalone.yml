@@ -13,8 +13,8 @@ templates:
   - "templates/web.template.yml"
   - "templates/web.ratelimited.template.yml"
   ## Uncomment these two lines if you wish to add Lets Encrypt (https)
-  #- "templates/web.ssl.template.yml"
-  #- "templates/web.letsencrypt.ssl.template.yml"
+  - "templates/web.ssl.template.yml"
+  - "templates/web.letsencrypt.ssl.template.yml"
 
 ## which TCP/IP ports should this container expose?
 ## If you want Discourse to share a port with another webserver like Apache or nginx,
@@ -72,7 +72,7 @@ env:
   #DISCOURSE_SMTP_AUTHENTICATION: plain            # (default: plain, valid values: plain, login, cram_md5)
 
   ## If you added the Lets Encrypt template, uncomment below to get a free SSL certificate
-  #LETSENCRYPT_ACCOUNT_EMAIL: me@example.com
+  LETSENCRYPT_ACCOUNT_EMAIL: shauryajha1602@gmail.com
 
   ## The http or https CDN address for this Discourse instance (configured to pull)
   ## see https://meta.discourse.org/t/14857 for details
@@ -108,18 +108,8 @@ hooks:
           - apt-get update
           - apt-get -y upgrade
 
-          # Install 'software-properties-common' to enable adding PPAs
-          # - apt-get install -y software-properties-common
-
-          # Add the 'jonathonf/ffmpeg-4' PPA
-          # - add-apt-repository -y ppa:jonathonf/ffmpeg-4
-
-          # Update the package list again to include packages from the new PPA
-          - apt-get update
-
           # Finally, install all the required packages
           - apt-get install -y imagemagick libmagickwand-dev 
-          # ffmpeg
 
 
 ## Any custom commands to run after building
