@@ -106,7 +106,8 @@ hooks:
         cmd:
           - apt-get update
           - apt-get -y upgrade      # update and upgrade all the packages to latest updates
-          - apt-get install -y ffmpeg imagemagick libmagickwand-dev       # install dependencies required in order to make watermarking work
+          - apt-get install -y imagemagick libmagickwand-dev       # install dependencies required in order to make watermarking work
+          - apt-get install -y ffmpeg
 
 
 ## Any custom commands to run after building
