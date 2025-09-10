@@ -104,10 +104,21 @@ hooks:
   after_bundle:
     - exec:
         cmd:
+          # First, update and upgrade existing packages
           - apt-get update
-          - apt-get -y upgrade      # update and upgrade all the packages to latest updates
-          - apt-get install -y imagemagick libmagickwand-dev       # install dependencies required in order to make watermarking work
-          - apt-get install -y ffmpeg
+          - apt-get -y upgrade
+
+          # Install 'software-properties-common' to enable adding PPAs
+          - apt-get install -y software-properties-common
+
+          # Add the 'jonathonf/ffmpeg-4' PPA
+          - add-apt-repository -y ppa:jonathonf/ffmpeg-4
+
+          # Update the package list again to include packages from the new PPA
+          - apt-get update
+
+          # Finally, install all the required packages
+          - apt-get install -y imagemagick libmagickwand-dev ffmpeg
 
 
 ## Any custom commands to run after building
